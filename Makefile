@@ -6,7 +6,7 @@ CFLAGS+=-O2 -Wall
 OBJS=hostname.o
 
 hostname: $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $(OBJS) -lnsl
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS) -lnsl
 	ln -fs hostname dnsdomainname
 	ln -fs hostname domainname
 	ln -fs hostname ypdomainname
@@ -19,7 +19,7 @@ install: hostname
 	ln -fs hostname.1 ${BASEDIR}/usr/share/man/man1/domainname.1
 	ln -fs hostname.1 ${BASEDIR}/usr/share/man/man1/ypdomainname.1
 	ln -fs hostname.1 ${BASEDIR}/usr/share/man/man1/nisdomainname.1
-	install -o root -g root -m 0644 hostname.1.fr ${BASEDIR}/usr/share/man/fr/man1/hostname.1
+	#install -o root -g root -m 0644 hostname.1.fr ${BASEDIR}/usr/share/man/fr/man1/hostname.1
 
 	install -d ${BASEDIR}/bin
 	install -o root -g root -m 0755 hostname ${BASEDIR}/bin

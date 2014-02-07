@@ -1,3 +1,59 @@
+hostname (3.11) unstable; urgency=low
+
+  * Fixed typo in manpage.
+    Thanks to Regid Ichira <regid23@yahoo.com> (Closes: #659836)
+  * Order options alphabetically in program.
+    Thanks to Jari Aalto <jari.aalto@cante.net> (Closes: #660106)
+  * Combine options in manpage.
+  * Do not install hostname.1.fr anymore because it is outdated.
+
+ -- Michael Meskes <meskes@debian.org>  Thu, 16 Feb 2012 16:02:01 +0100
+
+hostname (3.10) unstable; urgency=low
+
+  * Enabled hardened build flag.
+    Thanks to Moritz Muehlenhoff <jmm@debian.org> (Closes: #655874)
+
+ -- Michael Meskes <meskes@debian.org>  Sun, 15 Jan 2012 13:52:38 +0100
+
+hostname (3.09) unstable; urgency=low
+
+  * Order items alphabetically in manpage.
+    Thanks to Jari Aalto <jari.aalto@cante.net> (Closes: #653269)
+
+ -- Michael Meskes <meskes@debian.org>  Wed, 28 Dec 2011 15:14:48 +0100
+
+hostname (3.08) unstable; urgency=low
+
+  * Prevent a potential buffer underrun.
+  * Clarified FQDN message in man page. (Closes: #626292)
+  * Use Breaks instead of Conflicts.
+
+ -- Michael Meskes <meskes@debian.org>  Fri, 23 Dec 2011 11:07:34 +0100
+
+hostname (3.07) unstable; urgency=low
+
+  * Strip leading and trailing whitespaces from hostname. (Closes: #650822)
+  * Bumped Standards-Version to 3.9.2, no changes needed.
+  * Added build-arch and build-indep targets to rules file.
+
+ -- Michael Meskes <meskes@debian.org>  Thu, 22 Dec 2011 16:31:05 +0100
+
+hostname (3.06) unstable; urgency=low
+
+  * Relax version comparison to make binnmus possible. (Closes: #616683)
+
+ -- Michael Meskes <meskes@debian.org>  Mon, 07 Mar 2011 12:31:08 +0100
+
+hostname (3.05) unstable; urgency=low
+
+  * Updated hostname.c to carry correct version number. (Closes:
+    #602987)
+  * Bumped Standards-Version to 3.9.1, no changes needed.
+  * Added source/format file.
+
+ -- Michael Meskes <meskes@debian.org>  Tue, 16 Nov 2010 14:31:07 +0100
+
 hostname (3.04) unstable; urgency=low
 
   * Don't strip domain before resolving it for a fqdn hostname. (Closes:

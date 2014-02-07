@@ -15,39 +15,25 @@ dnsdomainname \- show the system's DNS domain name
 .SH SYNOPSIS
 .B hostname
 .RB [ \-v ]
-.RB [ \-a ]
-.RB [ \-\-alias ]
-.RB [ \-d ]
-.RB [ \-\-domain ]
-.RB [ \-f ]
-.RB [ \-\-fqdn ]
-.RB [ \-A ]
-.RB [ \-\-all-fqdns ]
-.RB [ \-i ]
-.RB [ \-\-ip-address ]
-.RB [ \-I ]
-.RB [ \-\-all-ip-addresses ]
-.RB [ \-\-long ]
-.RB [ \-s ]
-.RB [ \-\-short ]
-.RB [ \-y ]
-.RB [ \-\-yp ]
-.RB [ \-\-nis ]
+.RB [ \-a|\-\-alias ]
+.RB [ \-d|\-\-domain ]
+.RB [ \-f|\-\-fqdn|\-\-long ]
+.RB [ \-A|\-\-all-fqdns ]
+.RB [ \-i|\-\-ip-address ]
+.RB [ \-I|\-\-all-ip-addresses ]
+.RB [ \-s|\-\-short ]
+.RB [ \-y|\-\-yp|\-\-nis ]
 .br
 .B hostname
 .RB [ \-v ]
-.RB [ \-b ]
-.RB [ \-\-boot ]
-.RB [ \-F\ filename ]
-.RB [ \-\-file\ filename ]
+.RB [ \-b|\-\-boot ]
+.RB [ \-F|\-\-file\ filename ]
 .RB [ hostname ]
 .br
 .B hostname
 .RB [ \-v ]
-.RB [ \-h ]
-.RB [ \-\-help ]
-.RB [ \-V ]
-.RB [ \-\-version ]
+.RB [ \-h|\-\-help ]
+.RB [ \-V|\-\-version ]
 .PP
 .B domainname
 .RB [ nisdomain ]
@@ -166,6 +152,15 @@ is subject to the same limitations so it should be avoided as well.
 Display the alias name of the host (if used). This option is deprecated
 and should not be used anymore.
 .TP
+.I "\-A, \-\-all-fqdns"
+Displays all FQDNs of the machine. This option enumerates all configured
+network addresses on all configured network interfaces, and translates
+them to DNS domain names. Addresses that cannot be translated (i.e. because
+they do not have an appropriate reverse DNS entry) are skipped. Note that
+different addresses may resolve to the same name, therefore the output may
+contain duplicate entries. Do not make any assumptions about the order of the
+output.
+.TP
 .I "\-b, \-\-boot"
 Always set a hostname; this allows the file specified by \fI-F\fR to be
 non-existant or empty, in which case the default hostname \fIlocalhost\fR
@@ -177,13 +172,9 @@ Display the name of the DNS domain.  Don't use the command
 to get the DNS domain name because it will show the NIS domain name and
 not the DNS domain name. Use
 .B dnsdomainname
-instead. Ssee the warnings in section
+instead. See the warnings in section
 .B "THE FQDN"
 above, and avoid using this option.
-.TP
-.I "\-F, \-\-file filename"
-Read the host name from the specified file. Comments (lines starting with
-a `#') are ignored.
 .TP
 .I "\-f, \-\-fqdn, \-\-long"
 Display the FQDN (Fully Qualified Domain Name). A FQDN consists of a
@@ -195,17 +186,9 @@ above, and avoid using this option; use
 .BR "hostname \-\-all-fqdns"
 instead.
 .TP
-.I "\-A, \-\-all-fqdns"
-Displays all FQDNs of the machine. This option enumerates all configured
-network addresses on all configured network interfaces, and translates
-them to DNS domain names. Addresses that cannot be translated (i.e. because
-they do not have an appropriate reverse DNS entry) are skipped. Note that
-different addresses may resolve to the same name, therefore the output may
-contain duplicate entries. Do not make any assumptions about the order of the
-output.
-.TP
-.I "\-h, \-\-help"
-Print a usage message and exit.
+.I "\-F, \-\-file filename"
+Read the host name from the specified file. Comments (lines starting with
+a `#') are ignored.
 .TP
 .I "\-i, \-\-ip-address"
 Display the network address(es) of the host name. Note that this works only
@@ -223,16 +206,19 @@ order of the output.
 .I "\-s, \-\-short"
 Display the short host name. This is the host name cut at the first dot.
 .TP
-.I "\-V, \-\-version"
-Print version information on standard output and exit successfully.
-.TP
 .I "\-v, \-\-verbose"
 Be verbose and tell what's going on.
+.TP
+.I "\-V, \-\-version"
+Print version information on standard output and exit successfully.
 .TP
 .I "\-y, \-\-yp, \-\-nis"
 Display the NIS domain name. If a parameter is given (or
 .B \-\-file name
 ) then root can also set a new NIS domain.
+.TP
+.I "\-h, \-\-help"
+Print a usage message and exit.
 .SH NOTES
 The address families
 .B hostname
@@ -247,7 +233,8 @@ option in
 .B /etc/hosts
 
 .B /etc/hostname
-This file should only contain the hostname and not the full FQDN.
+Historically this file was supposed to only contain the hostname and not the
+full canonical FQDN. Nowadays most software is able to cope with a full FQDN here.
 .SH AUTHORS
 Peter Tobias, <tobias@et-inf.fho-emden.de>
 .br

@@ -45,7 +45,7 @@
 #include <err.h>
 #include <rpcsvc/ypclnt.h>
 
-#define VERSION "3.11"
+#define VERSION "3.15"
 
 enum type_t { DEFAULT, DNS, FQDN, SHORT, ALIAS, IP, NIS, NIS_DEF, ALL_FQDNS, ALL_IPS };
 
@@ -146,16 +146,16 @@ void
 usage(FILE *stream)
 {
 	fprintf(stream,
-		"Usage: hostname [-v] [-b] {hostname|-F file}         set host name (from file)\n"
-		"       hostname [-v] [-a|-A|-d|-f|-i|-I|-s|-y]       display formatted name\n"
-		"       hostname [-v]                                 display host name\n"
+		"Usage: hostname [-b] {hostname|-F file}         set host name (from file)\n"
+		"       hostname [-a|-A|-d|-f|-i|-I|-s|-y]       display formatted name\n"
+		"       hostname                                 display host name\n"
 		"\n"
-		"       {yp,nis,}domainname [-v] {nisdomain|-F file}  set NIS domain name (from file)\n"
-		"       {yp,nis,}domainname [-v]                      display NIS domain name\n"
+		"       {yp,nis,}domainname {nisdomain|-F file}  set NIS domain name (from file)\n"
+		"       {yp,nis,}domainname                      display NIS domain name\n"
 		"\n"
-		"       dnsdomainname [-v]                            display dns domain name\n"
+		"       dnsdomainname                            display dns domain name\n"
 		"\n"
-		"       hostname -V|--version|-h|--help               print info and exit\n"
+		"       hostname -V|--version|-h|--help          print info and exit\n"
 		"\n"
 		"Program name:\n"
 		"       {yp,nis,}domainname=hostname -y\n"
@@ -447,7 +447,6 @@ main(int argc, char **argv)
 		{"long", no_argument, 0, 'f'},
 		{"short", no_argument, 0, 's'},
 		{"version", no_argument, 0, 'V'},
-		{"verbose", no_argument, 0, 'v'},
 		{"alias", no_argument, 0, 'a'},
 		{"ip-address", no_argument, 0, 'i'},
 		{"all-ip-addresses", no_argument, 0, 'I'},
@@ -467,7 +466,7 @@ main(int argc, char **argv)
 	else if (!strcmp(progname, "nisdomainname"))
 		type = NIS_DEF;
 
-	while((o = getopt_long(argc, argv, "aAdfbF:h?iIsVvy", long_options, NULL)) != -1)
+	while((o = getopt_long(argc, argv, "aAdfbF:h?iIsVy", long_options, NULL)) != -1)
 		switch (o) {
 		case 'd':
 			type = DNS;
@@ -498,9 +497,6 @@ main(int argc, char **argv)
 			break;
 		case 'F':
 			file = optarg;
-			break;
-		case 'v':
-			/* Does not do anything. */
 			break;
 		case 'V':
 			printf("hostname %s\n", VERSION);

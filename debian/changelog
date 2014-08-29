@@ -1,3 +1,35 @@
+hostname (3.15) unstable; urgency=low
+
+  * Applied patch to make it possible to install binaries and man pages into
+    custom directories.
+    Thanks to Jiri Popelka <jpopelka@redhat.com> (Closes: #726484)
+  * Tried to clarify manpage. (Closes: #718393)
+  * Removed hostname.1.fr with was outdated and not kept in sync.
+
+ -- Michael Meskes <meskes@debian.org>  Sun, 03 Nov 2013 15:27:04 +0100
+
+hostname (3.14) unstable; urgency=low
+
+  * Symlink binaries instead of hardlinking them. (Closes: #718400)
+
+ -- Michael Meskes <meskes@debian.org>  Fri, 06 Sep 2013 12:06:19 +0200
+
+hostname (3.13) unstable; urgency=low
+
+  * Finally completely remove verbose option.
+    Thanks to Jiri Popelka <jpopelka@redhat.com> (Closes: #703974)
+  * Bumped Standards-Version to 3.9.4, no changes needed.
+
+ -- Michael Meskes <meskes@debian.org>  Tue, 18 Jun 2013 11:51:37 +0200
+
+hostname (3.12) unstable; urgency=low
+
+  * Rewrote parts of the manpage.
+    Thanks to Ben Wong <bugs.debian.org@wongs.net> (Closes: #568889)
+  * Bumped Standards-Version to 3.9.3, no changes needed.
+
+ -- Michael Meskes <meskes@debian.org>  Thu, 06 Dec 2012 16:15:53 +0100
+
 hostname (3.11) unstable; urgency=low
 
   * Fixed typo in manpage.
